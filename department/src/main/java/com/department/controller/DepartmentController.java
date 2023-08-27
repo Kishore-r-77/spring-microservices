@@ -6,10 +6,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.department.dto.DepartmentDto;
@@ -38,8 +38,8 @@ public class DepartmentController {
         return new ResponseEntity<>(saveDepartment, HttpStatus.CREATED);
     }
 
-    @GetMapping("/getById")
-    public ResponseEntity<DepartmentDto> getById(@RequestParam Long id) {
+    @GetMapping("/getById/{id}")
+    public ResponseEntity<DepartmentDto> getById(@PathVariable Long id) {
         DepartmentDto department = departmentServiceImpl.getById(id);
         return new ResponseEntity<DepartmentDto>(department, HttpStatus.OK);
     }
