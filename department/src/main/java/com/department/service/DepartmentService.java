@@ -11,4 +11,6 @@ public interface DepartmentService {
     public DepartmentDto create(Department department);
 
     public DepartmentDto getById(Long id);
+
+    public DepartmentDto getByDeptCode(String deptCode);
 }

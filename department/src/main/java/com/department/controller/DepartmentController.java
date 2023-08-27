@@ -44,4 +44,10 @@ public class DepartmentController {
         return new ResponseEntity<DepartmentDto>(department, HttpStatus.OK);
     }
 
+    @GetMapping("/getByDeptCode/{deptCode}")
+    public ResponseEntity<DepartmentDto> getByDeptCode(@PathVariable(name = "deptCode") String code) {
+        DepartmentDto department = departmentServiceImpl.getByDeptCode(code);
+        return new ResponseEntity<DepartmentDto>(department, HttpStatus.OK);
+    }
+
 }

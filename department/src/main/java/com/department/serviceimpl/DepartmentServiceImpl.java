@@ -45,4 +45,12 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentDto;
     }
 
+    @Override
+    public DepartmentDto getByDeptCode(String deptCode) {
+        Department department = departmentRepository.getByDeptCode(deptCode);
+        DepartmentDto departmentDto = AutoDepartmentMapper.MAPPER.mapToDepartmentDto(department);
+
+        return departmentDto;
+    }
+
 }

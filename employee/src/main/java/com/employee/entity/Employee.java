@@ -19,4 +19,5 @@ public class Employee {
     private String firstName;
     private String lastName;
     private Integer age;
+    private String departmentCode;
 }
