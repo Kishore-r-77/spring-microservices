@@ -16,7 +16,6 @@ import com.employee.mapper.AutoEmployeeMapper;
 import com.employee.repository.EmployeeRepository;
 import com.employee.service.EmployeeService;
 
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
