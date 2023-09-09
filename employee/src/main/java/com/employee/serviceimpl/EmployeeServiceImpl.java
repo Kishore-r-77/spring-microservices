@@ -15,6 +15,7 @@ import com.employee.repository.EmployeeRepository;
 import com.employee.service.ApiClient;
 import com.employee.service.EmployeeService;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
@@ -47,7 +48,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeDto;
 
     }
-
+    
+    @CircuitBreaker(name = "${spring.application.name}",fallbackMethod = "getDefaultDepartment")
     @Override
     public ApiResponse getById(Long id) {
         Employee employee = employeeRepository.findById(id).get();
@@ -68,6 +70,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         ResponseEntity<DepartmentDto> responseEntity = apiClient.getDepartmentByDeptCode(employee.getDepartmentCode());
         DepartmentDto departmentDto = responseEntity.getBody();
+        ApiResponse apiResponse = new ApiResponse();
+        apiResponse.setDepartment(departmentDto);
+        apiResponse.setEmployee(employeeDto);
+
+        return apiResponse;
+    }
+    
+    public ApiResponse getDefaultDepartment(Long id) {
+    	Employee employee = employeeRepository.findById(id).get();
+        EmployeeDto employeeDto = AutoEmployeeMapper.MAPPER.mapToEmployeeDto(employee);
+        
+
+        DepartmentDto departmentDto=new DepartmentDto();
+        departmentDto.setName("Default Dept");
+        departmentDto.setCode("DCODE");
         ApiResponse apiResponse = new ApiResponse();
         apiResponse.setDepartment(departmentDto);
         apiResponse.setEmployee(employeeDto);
