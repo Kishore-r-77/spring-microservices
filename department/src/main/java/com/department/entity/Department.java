@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+// Department Entity
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

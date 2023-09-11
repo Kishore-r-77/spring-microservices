@@ -17,7 +17,7 @@ import com.department.entity.Department;
 import com.department.serviceimpl.DepartmentServiceImpl;
 
 import lombok.AllArgsConstructor;
-
+// Department Controller
 @RestController
 @RequestMapping("/department")
 @AllArgsConstructor

@@ -6,7 +6,7 @@ import org.mapstruct.factory.Mappers;
 
 import com.department.dto.DepartmentDto;
 import com.department.entity.Department;
-
+//Department Mapper using Mapstruct
 @Mapper(componentModel = "spring")
 public interface AutoDepartmentMapper {
 
