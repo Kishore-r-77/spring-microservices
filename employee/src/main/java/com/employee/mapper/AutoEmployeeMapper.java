@@ -5,7 +5,7 @@ import org.mapstruct.factory.Mappers;
 
 import com.employee.dto.EmployeeDto;
 import com.employee.entity.Employee;
-
+// Mapper using Mapstruct
 @Mapper(componentModel = "spring")
 public interface AutoEmployeeMapper {
 
